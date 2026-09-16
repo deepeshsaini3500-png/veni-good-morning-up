@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Good Morning Veni ❤️</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    color: white;
+    background: #10091c;
+}
+
+.scene {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* NIGHT */
+.night {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 20% 20%, white 0 1px, transparent 2px),
+        radial-gradient(circle at 70% 15%, white 0 1px, transparent 2px),
+        radial-gradient(circle at 45% 35%, white 0 1px, transparent 2px),
+        radial-gradient(circle at 85% 45%, white 0 1px, transparent 2px),
+        radial-gradient(circle at 30% 70%, white 0 1px, transparent 2px),
+        linear-gradient(#090719, #29102e);
+    transition: 2s;
+}
+
+/* SUNRISE */
+.sunrise {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        #ff9a9e,
+        #fad0c4,
+        #ffd98e
+    );
+    opacity: 0;
+    transition: 2s;
+}
+
+.sun {
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: #fff1a8;
+    box-shadow: 0 0 80px #fff0a0;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: 2s;
+}
+
+/* CARD */
+.card {
+    position: relative;
+    z-index: 10;
+    width: 88%;
+    max-width: 420px;
+    padding: 35px 24px;
+    border-radius: 28px;
+    background: rgba(255,255,255,0.13);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 20px 70px rgba(0,0,0,0.4);
+    animation: appear 0.8s ease;
+}
+
+.hidden {
+    display: none;
+}
+
+h1 {
+    font-size: 36px;
+    margin: 10px 0;
+}
+
+h2 {
+    font-size: 25px;
+    margin: 12px 0;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+button {
+    margin-top: 18px;
+    padding: 15px 28px;
+    border: none;
+    border-radius: 50px;
+    background: #ff4f87;
+    color: white;
+    font-size: 17px;
+    box-shadow: 0 0 25px rgba(255,79,135,0.7);
+    cursor: pointer;
+}
+
+button:active {
+    transform: scale(0.94);
+}
+
+.small {
+    font-size: 13px;
+    opacity: 0.7;
+    margin-top: 15px;
+}
+
+/* FLOATING HEARTS */
+.heart {
+    position: absolute;
+    bottom: -40px;
+    font-size: 25px;
+    animation: float 5s linear forwards;
+    z-index: 5;
+    pointer-events: none;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) scale(0.7);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-110vh) scale(1.5) rotate(25deg);
+        opacity: 0;
+    }
+}
+
+/* CARD APPEAR */
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* GLOW */
+.glow {
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 8px #ff7fa5;
+    }
+
+    to {
+        text-shadow: 0 0 28px white;
+    }
+}
+
+/* HEART BURST */
+.burst-heart {
+    position: absolute;
+    font-size: 25px;
+    z-index: 20;
+    pointer-events: none;
+    animation: burst 2.5s ease-out forwards;
+}
+
+@keyframes burst {
+    0% {
+        left: 50%;
+        top: 50%;
+        transform: scale(0.3);
+        opacity: 1;
+    }
+
+    100% {
+        left: calc(50% + var(--x));
+        top: calc(50% + var(--y));
+        transform: scale(1.5) rotate(30deg);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="scene">
+
+    <div class="night" id="night"></div>
+    <div class="sunrise" id="sunrise"></div>
+    <div class="sun" id="sun"></div>
+
+
+    <!-- SCREEN 1 -->
+
+    <div class="card" id="screen1">
+
+        <div style="font-size:55px;">🌙✨</div>
+
+        <h2>Hey Veni... 👀❤️</h2>
+
+        <p>
+            Bas tumhare liye<br>
+            ek chhoti si surprise hai... 💌
+        </p>
+
+        <button onclick="openSurprise()">
+            Open Your Surprise 💝
+        </button>
+
+        <div class="small">
+            Don't tell anyone 🤫
+        </div>
+
+    </div>
+
+
+    <!-- SCREEN 2 -->
+
+    <div class="card hidden" id="screen2">
+
+        <div style="font-size:65px;">🎁</div>
+
+        <h1 class="glow">Good Morning ☀️</h1>
+
+        <h2>Veni Sharma ❤️</h2>
+
+        <p>
+            Pata nahi kyun... 😌
+        </p>
+
+        <p>
+            Subah aankh khulte hi<br>
+            sabse pehle tum yaad aa jaati ho... ❤️
+        </p>
+
+        <button onclick="nextScreen()">
+            Ek baat bolu? 👀
+        </button>
+
+    </div>
+
+
+    <!-- SCREEN 3 -->
+
+    <div class="card hidden" id="screen3">
+
+        <div style="font-size:55px;">🌸💕</div>
+
+        <h2>Ek baat bolu? 👀</h2>
+
+        <p>
+            Tumhari ek problem hai...
+        </p>
+
+        <p>
+            <b>
+            Tumse baat karne ke baad<br>
+            kisi aur se baat karne ka<br>
+            mann hi nahi karta 😌❤️
+            </b>
+        </p>
+
+        <p>
+            Aur pata hai sabse dangerous kya hai? 👀
+        </p>
+
+        <p>
+            <b>
+            Tumhari aadat lag rahi hai...<br>
+            aur mujhe ye aadat buri bhi nahi lag rahi 😏💕
+            </b>
+        </p>
+
+        <button onclick="finalScreen()">
+            Accha, ab smile karo 😌
+        </button>
+
+    </div>
+
+
+    <!-- FINAL SCREEN -->
+
+    <div class="card hidden" id="screen4">
+
+        <div style="font-size:65px;">☀️✨</div>
+
+        <h1 class="glow">
+            Okay, bas itna hi... 😌
+        </h1>
+
+        <p>
+            Aaj ka din achha jaana chahiye,
+            kyunki aaj subah meri taraf se
+            <b>ek special Good Morning mil chuki hai ❤️</b>
+        </p>
+
+        <h2>
+            Have a beautiful day, Veni 🌸
+        </h2>
+
+        <p>
+            Aur haan...
+        </p>
+
+        <h2>
+            Thoda sa mujhe yaad kar lena 😏💕
+        </h2>
+
+        <div style="font-size:35px;">
+            ❤️ 💕 💗 💖 ✨
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* FLOATING HEARTS */
+
+function createHeart() {
+
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+
+    const emojis = [
+        "❤️",
+        "💕",
+        "💗",
+        "💖",
+        "✨",
+        "🌸"
+    ];
+
+    heart.innerHTML =
+        emojis[Math.floor(Math.random() * emojis.length)];
+
+    heart.style.left =
+        Math.random() * 100 + "%";
+
+    heart.style.animationDuration =
+        (4 + Math.random() * 3) + "s";
+
+    document.querySelector(".scene")
+        .appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 7000);
+}
+
+setInterval(createHeart, 550);
+
+
+/* OPEN SURPRISE */
+
+function openSurprise() {
+
+    document.getElementById("screen1")
+        .classList.add("hidden");
+
+    document.getElementById("screen2")
+        .classList.remove("hidden");
+
+    document.getElementById("night")
+        .style.opacity = "0";
+
+    document.getElementById("sunrise")
+        .style.opacity = "1";
+
+    document.getElementById("sun")
+        .style.bottom = "20%";
+
+    heartBurst();
+}
+
+
+/* SCREEN 3 */
+
+function nextScreen() {
+
+    document.getElementById("screen2")
+        .classList.add("hidden");
+
+    document.getElementById("screen3")
+        .classList.remove("hidden");
+
+    heartBurst();
+}
+
+
+/* FINAL SCREEN */
+
+function finalScreen() {
+
+    document.getElementById("screen3")
+        .classList.add("hidden");
+
+    document.getElementById("screen4")
+        .classList.remove("hidden");
+
+    heartBurst();
+}
+
+
+/* HEART BURST */
+
+function heartBurst() {
+
+    for (let i = 0; i < 20; i++) {
+
+        const heart =
+            document.createElement("div");
+
+        heart.className = "burst-heart";
+
+        heart.innerHTML =
+            Math.random() > 0.3 ? "❤️" : "✨";
+
+        heart.style.setProperty(
+            "--x",
+            (Math.random() * 500 - 250) + "px"
+        );
+
+        heart.style.setProperty(
+            "--y",
+            (Math.random() * 500 - 250) + "px"
+        );
+
+        document.querySelector(".scene")
+            .appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 2500);
+    }
+}
+
+</script>
+
+</body>
+</html>

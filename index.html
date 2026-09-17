@@ -3,465 +3,1243 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Good Morning Veni ❤️</title>
+
+<title>Veni's Secret Mission 🌻</title>
 
 <style>
-* {
-    box-sizing: border-box;
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-body {
-    margin: 0;
-    height: 100vh;
-    overflow: hidden;
-    font-family: Arial, sans-serif;
-    color: white;
-    background: #10091c;
-}
+body{
+    min-height:100vh;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 
-.scene {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-}
-
-/* NIGHT */
-.night {
-    position: absolute;
-    inset: 0;
     background:
-        radial-gradient(circle at 20% 20%, white 0 1px, transparent 2px),
-        radial-gradient(circle at 70% 15%, white 0 1px, transparent 2px),
-        radial-gradient(circle at 45% 35%, white 0 1px, transparent 2px),
-        radial-gradient(circle at 85% 45%, white 0 1px, transparent 2px),
-        radial-gradient(circle at 30% 70%, white 0 1px, transparent 2px),
-        linear-gradient(#090719, #29102e);
-    transition: 2s;
+        radial-gradient(circle at 20% 10%,#fff8c7 0%,transparent 28%),
+        radial-gradient(circle at 90% 80%,#ffe9a8 0%,transparent 30%),
+        linear-gradient(135deg,#fffdf1,#fff3b8,#fffaf0);
+
+    color:#493816;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:20px;
+
+    overflow-x:hidden;
 }
 
-/* SUNRISE */
-.sunrise {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        #ff9a9e,
-        #fad0c4,
-        #ffd98e
-    );
-    opacity: 0;
-    transition: 2s;
+
+/* 🌻 FLOATING FLOWERS */
+
+.flower{
+    position:fixed;
+    bottom:-50px;
+    font-size:24px;
+    opacity:.55;
+    pointer-events:none;
+
+    animation:floatFlower linear infinite;
 }
 
-.sun {
-    position: absolute;
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
-    background: #fff1a8;
-    box-shadow: 0 0 80px #fff0a0;
-    bottom: -100px;
-    left: 50%;
-    transform: translateX(-50%);
-    transition: 2s;
+@keyframes floatFlower{
+
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:0;
+    }
+
+    15%{
+        opacity:.6;
+    }
+
+    100%{
+        transform:translateY(-110vh) rotate(180deg);
+        opacity:0;
+    }
+
 }
+
+
+/* MAIN CONTAINER */
+
+.container{
+    width:100%;
+    max-width:520px;
+
+    position:relative;
+    z-index:2;
+}
+
 
 /* CARD */
-.card {
-    position: relative;
-    z-index: 10;
-    width: 88%;
-    max-width: 420px;
-    padding: 35px 24px;
-    border-radius: 28px;
-    background: rgba(255,255,255,0.13);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255,255,255,0.2);
-    box-shadow: 0 20px 70px rgba(0,0,0,0.4);
-    animation: appear 0.8s ease;
+
+.card{
+    background:rgba(255,255,255,.72);
+
+    border:2px solid rgba(242,190,35,.35);
+
+    border-radius:30px;
+
+    padding:30px 23px;
+
+    text-align:center;
+
+    box-shadow:
+        0 15px 45px rgba(139,101,15,.15),
+        inset 0 1px rgba(255,255,255,.8);
+
+    backdrop-filter:blur(12px);
+
+    animation:cardIn .6s ease;
 }
 
-.hidden {
-    display: none;
-}
+@keyframes cardIn{
 
-h1 {
-    font-size: 36px;
-    margin: 10px 0;
-}
-
-h2 {
-    font-size: 25px;
-    margin: 12px 0;
-}
-
-p {
-    font-size: 18px;
-    line-height: 1.6;
-}
-
-button {
-    margin-top: 18px;
-    padding: 15px 28px;
-    border: none;
-    border-radius: 50px;
-    background: #ff4f87;
-    color: white;
-    font-size: 17px;
-    box-shadow: 0 0 25px rgba(255,79,135,0.7);
-    cursor: pointer;
-}
-
-button:active {
-    transform: scale(0.94);
-}
-
-.small {
-    font-size: 13px;
-    opacity: 0.7;
-    margin-top: 15px;
-}
-
-/* FLOATING HEARTS */
-.heart {
-    position: absolute;
-    bottom: -40px;
-    font-size: 25px;
-    animation: float 5s linear forwards;
-    z-index: 5;
-    pointer-events: none;
-}
-
-@keyframes float {
-    0% {
-        transform: translateY(0) scale(0.7);
-        opacity: 0;
+    from{
+        opacity:0;
+        transform:translateY(20px) scale(.97);
     }
 
-    15% {
-        opacity: 1;
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
     }
 
-    100% {
-        transform: translateY(-110vh) scale(1.5) rotate(25deg);
-        opacity: 0;
-    }
 }
 
-/* CARD APPEAR */
-@keyframes appear {
-    from {
-        opacity: 0;
-        transform: scale(0.9) translateY(20px);
-    }
 
-    to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
+/* 🌻 SUNFLOWER */
+
+.sunflower{
+    font-size:65px;
+    margin-bottom:8px;
+
+    animation:sway 2.5s ease-in-out infinite;
 }
 
-/* GLOW */
-.glow {
-    animation: glow 1.5s infinite alternate;
-}
+@keyframes sway{
 
-@keyframes glow {
-    from {
-        text-shadow: 0 0 8px #ff7fa5;
+    0%,100%{
+        transform:rotate(-3deg);
     }
 
-    to {
-        text-shadow: 0 0 28px white;
-    }
-}
-
-/* HEART BURST */
-.burst-heart {
-    position: absolute;
-    font-size: 25px;
-    z-index: 20;
-    pointer-events: none;
-    animation: burst 2.5s ease-out forwards;
-}
-
-@keyframes burst {
-    0% {
-        left: 50%;
-        top: 50%;
-        transform: scale(0.3);
-        opacity: 1;
+    50%{
+        transform:rotate(3deg);
     }
 
-    100% {
-        left: calc(50% + var(--x));
-        top: calc(50% + var(--y));
-        transform: scale(1.5) rotate(30deg);
-        opacity: 0;
-    }
 }
+
+
+/* HEADINGS */
+
+h1{
+    font-size:29px;
+    color:#7a5710;
+    margin-bottom:10px;
+}
+
+h2{
+    font-size:24px;
+    color:#765313;
+    margin-bottom:15px;
+}
+
+p{
+    line-height:1.6;
+    color:#654d24;
+    font-size:16px;
+}
+
+
+/* 🌻 VENI SHARMA */
+
+.veni-name{
+
+    font-size:48px;
+
+    font-weight:900;
+
+    letter-spacing:1.5px;
+
+    color:#d59b00;
+
+    margin:5px 0 20px;
+
+    text-shadow:
+        0 3px 8px rgba(213,155,0,.18),
+        0 0 22px rgba(255,210,50,.35);
+
+    animation:
+        veniPop .8s ease,
+        veniGlow 2.5s ease-in-out infinite;
+}
+
+@keyframes veniPop{
+
+    from{
+        opacity:0;
+        transform:scale(.7) translateY(10px);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1) translateY(0);
+    }
+
+}
+
+@keyframes veniGlow{
+
+    0%,100%{
+
+        text-shadow:
+            0 3px 8px rgba(213,155,0,.18),
+            0 0 18px rgba(255,210,50,.25);
+    }
+
+    50%{
+
+        text-shadow:
+            0 4px 12px rgba(213,155,0,.3),
+            0 0 30px rgba(255,210,50,.55);
+    }
+
+}
+
+
+/* SUBTITLE */
+
+.subtitle{
+    margin-bottom:25px;
+}
+
+
+/* BUTTONS */
+
+.start-btn,
+.next-btn,
+.reward-btn{
+
+    border:none;
+
+    padding:15px 25px;
+
+    border-radius:50px;
+
+    background:
+        linear-gradient(135deg,#f8c928,#e6a900);
+
+    color:#4b3505;
+
+    font-size:16px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 8px 20px rgba(205,157,16,.25);
+
+    transition:.25s;
+}
+
+.start-btn:hover,
+.next-btn:hover,
+.reward-btn:hover{
+
+    transform:
+        translateY(-2px)
+        scale(1.02);
+}
+
+
+/* TASK NUMBER */
+
+.task-number{
+
+    display:inline-block;
+
+    background:#fff3bd;
+
+    color:#916a0e;
+
+    padding:7px 14px;
+
+    border-radius:20px;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    margin-bottom:15px;
+}
+
+
+/* QUESTION */
+
+.question{
+
+    font-size:20px;
+
+    font-weight:700;
+
+    line-height:1.45;
+
+    margin-bottom:22px;
+
+    color:#493816;
+}
+
+
+/* PROGRESS */
+
+.progress{
+
+    display:flex;
+
+    gap:7px;
+
+    margin-bottom:22px;
+}
+
+.progress span{
+
+    height:6px;
+
+    flex:1;
+
+    border-radius:10px;
+
+    background:#eadfb8;
+}
+
+.progress span.active{
+
+    background:#efbd19;
+}
+
+
+/* OPTIONS */
+
+.options{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+}
+
+.option{
+
+    width:100%;
+
+    padding:15px 16px;
+
+    border-radius:17px;
+
+    border:2px solid #eee0ad;
+
+    background:#fffdf5;
+
+    color:#57431b;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    text-align:left;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.option:hover{
+
+    background:#fff7d6;
+
+    border-color:#eac039;
+
+    transform:translateX(3px);
+}
+
+.option.correct{
+
+    background:#f4fbdc;
+
+    border-color:#8fbd37;
+}
+
+.option.wrong{
+
+    background:#fff0e8;
+
+    border-color:#e58d70;
+}
+
+
+/* FEEDBACK */
+
+.feedback{
+
+    min-height:60px;
+
+    margin-top:18px;
+
+    padding:13px;
+
+    border-radius:16px;
+
+    font-size:14px;
+
+    line-height:1.5;
+
+    display:none;
+}
+
+.feedback.show{
+    display:block;
+}
+
+.feedback.success{
+
+    background:#f1f8dc;
+
+    color:#527020;
+
+    border:1px solid #d3e8a2;
+}
+
+.feedback.error{
+
+    background:#fff0e8;
+
+    color:#a5533a;
+
+    border:1px solid #f0c0ad;
+}
+
+
+/* NEXT BUTTON */
+
+.next-btn{
+
+    display:none;
+
+    margin-top:15px;
+}
+
+
+/* REWARD */
+
+.reward-icon{
+
+    font-size:70px;
+
+    animation:bounce 1.5s infinite;
+}
+
+@keyframes bounce{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-8px);
+    }
+
+}
+
+.reward-title{
+
+    font-size:29px;
+
+    font-weight:800;
+
+    color:#765313;
+
+    margin:12px 0;
+}
+
+
+/* FINAL CLUE */
+
+.clue{
+
+    margin-top:24px;
+
+    padding:21px;
+
+    border-radius:22px;
+
+    background:#fff9dc;
+
+    border:2px dashed #e3b52a;
+}
+
+.clue-title{
+
+    font-size:21px;
+
+    font-weight:800;
+
+    color:#916a0e;
+
+    margin-bottom:12px;
+}
+
+.chocolate{
+
+    font-size:46px;
+
+    margin-top:17px;
+}
+
+
+/* HIDDEN */
+
+.hidden{
+    display:none;
+}
+
+
+/* SHAKE */
+
+.shake{
+    animation:shake .35s;
+}
+
+@keyframes shake{
+
+    0%,100%{
+        transform:translateX(0);
+    }
+
+    25%{
+        transform:translateX(-7px);
+    }
+
+    75%{
+        transform:translateX(7px);
+    }
+
+}
+
+
+/* MOBILE */
+
+@media(max-width:400px){
+
+    body{
+        padding:14px;
+    }
+
+    .card{
+        padding:25px 18px;
+    }
+
+    h1{
+        font-size:27px;
+    }
+
+    .veni-name{
+        font-size:39px;
+    }
+
+    .question{
+        font-size:18px;
+    }
+
+    .option{
+        font-size:14px;
+    }
+
+}
+
 </style>
 </head>
 
+
 <body>
 
-<div class="scene">
 
-    <div class="night" id="night"></div>
-    <div class="sunrise" id="sunrise"></div>
-    <div class="sun" id="sun"></div>
+<div class="container">
 
 
-    <!-- SCREEN 1 -->
+<!-- 🌻 START SCREEN -->
 
-    <div class="card" id="screen1">
+<div class="card" id="startScreen">
 
-        <div style="font-size:55px;">🌙✨</div>
+    <div class="sunflower">
+        🌻
+    </div>
 
-        <h2>Hey Veni... 👀❤️</h2>
+    <h1>
+        SECRET MISSION
+    </h1>
 
-        <p>
-            Bas tumhare liye<br>
-            ek chhoti si surprise hai... 💌
-        </p>
+    <div class="veni-name">
+        Veni Sharma 🌻
+    </div>
 
-        <button onclick="openSurprise()">
-            Open Your Surprise 💝
-        </button>
+    <p class="subtitle">
 
-        <div class="small">
-            Don't tell anyone 🤫
+        Heyyy 👀❤️
+
+        <br><br>
+
+        Tumhare liye 3 chhote-chhote tasks hain… 🌻
+
+        <br>
+
+        <b>
+            Teeno ka answer sahi hona chahiye 😏
+        </b>
+
+    </p>
+
+    <button
+        class="start-btn"
+        onclick="startMission()">
+
+        START MISSION 🌻
+
+    </button>
+
+</div>
+
+
+
+<!-- 🔐 TASK SCREEN -->
+
+<div class="card hidden" id="taskScreen">
+
+    <div
+        class="sunflower"
+        style="font-size:42px;">
+
+        🌻
+
+    </div>
+
+    <div class="progress">
+
+        <span
+            id="p1"
+            class="active">
+        </span>
+
+        <span id="p2">
+        </span>
+
+        <span id="p3">
+        </span>
+
+    </div>
+
+    <div
+        class="task-number"
+        id="taskNumber">
+
+        TASK 01
+
+    </div>
+
+    <div
+        class="question"
+        id="question">
+    </div>
+
+    <div
+        class="options"
+        id="options">
+    </div>
+
+    <div
+        class="feedback"
+        id="feedback">
+    </div>
+
+    <button
+        class="next-btn"
+        id="nextBtn"
+        onclick="nextTask()">
+
+        NEXT TASK 🌻
+
+    </button>
+
+</div>
+
+
+
+<!-- 🎁 REWARD SCREEN -->
+
+<div
+    class="card hidden"
+    id="rewardScreen">
+
+    <div class="reward-icon">
+        🌻🎁
+    </div>
+
+    <div class="reward-title">
+        ALL TASKS COMPLETED! 🎉
+    </div>
+
+    <p>
+        Tumne saare tasks successfully complete kar liye… 😌❤️
+    </p>
+
+    <p style="margin-top:12px;">
+
+        Ab itna effort kiya hai toh
+
+        <b>
+            reward toh banta hai na jiii 😁😁💕
+        </b>
+
+    </p>
+
+    <button
+        class="reward-btn"
+        onclick="showClue()"
+        style="margin-top:22px;">
+
+        CLAIM YOUR REWARD 🎁
+
+    </button>
+
+
+    <!-- 🔎 FINAL CLUE -->
+
+    <div
+        class="clue hidden"
+        id="clue">
+
+        <div class="clue-title">
+            🔎 FINAL CLUE 🌻
         </div>
 
-    </div>
-
-
-    <!-- SCREEN 2 -->
-
-    <div class="card hidden" id="screen2">
-
-        <div style="font-size:65px;">🎁</div>
-
-        <h1 class="glow">Good Morning ☀️</h1>
-
-        <h2>Veni Sharma ❤️</h2>
-
         <p>
-            Pata nahi kyun... 😌
-        </p>
 
-        <p>
-            Subah aankh khulte hi<br>
-            sabse pehle tum yaad aa jaati ho... ❤️
-        </p>
-
-        <button onclick="nextScreen()">
-            Ek baat bolu? 👀
-        </button>
-
-    </div>
-
-
-    <!-- SCREEN 3 -->
-
-    <div class="card hidden" id="screen3">
-
-        <div style="font-size:55px;">🌸💕</div>
-
-        <h2>Ek baat bolu? 👀</h2>
-
-        <p>
-            Tumhari ek problem hai...
-        </p>
-
-        <p>
+            Ab apne
             <b>
-            Tumse baat karne ke baad<br>
-            kisi aur se baat karne ka<br>
-            mann hi nahi karta 😌❤️
+                kamre mein jao 👀
             </b>
-        </p>
 
-        <p>
-            Aur pata hai sabse dangerous kya hai? 👀
-        </p>
+            <br><br>
 
-        <p>
+            Aur jahan tum apni
             <b>
-            Tumhari aadat lag rahi hai...<br>
-            aur mujhe ye aadat buri bhi nahi lag rahi 😏💕
+                jewellery sambhal kar rakhti ho… 💍✨
             </b>
+
+            <br><br>
+
+            Wahin tumhara reward tumhara wait kar raha hai. 😏❤️
+
         </p>
 
-        <button onclick="finalScreen()">
-            Accha, ab smile karo 😌
-        </button>
-
-    </div>
-
-
-    <!-- FINAL SCREEN -->
-
-    <div class="card hidden" id="screen4">
-
-        <div style="font-size:65px;">☀️✨</div>
-
-        <h1 class="glow">
-            Okay, bas itna hi... 😌
-        </h1>
-
-        <p>
-            Aaj ka din achha jaana chahiye,
-            kyunki aaj subah meri taraf se
-            <b>ek special Good Morning mil chuki hai ❤️</b>
-        </p>
-
-        <h2>
-            Have a beautiful day, Veni 🌸
-        </h2>
-
-        <p>
-            Aur haan...
-        </p>
-
-        <h2>
-            Thoda sa mujhe yaad kar lena 😏💕
-        </h2>
-
-        <div style="font-size:35px;">
-            ❤️ 💕 💗 💖 ✨
+        <div class="chocolate">
+            🍫🎁
         </div>
+
+        <p style="margin-top:10px;">
+
+            <b>
+                GO FIND IT! 🌻😏❤️
+            </b>
+
+        </p>
+
+        <p style="margin-top:10px;">
+
+            <b>
+                Gift mil jaaye toh photo zarur bhej dena jiii 😁💗
+            </b>
+
+        </p>
 
     </div>
 
 </div>
 
 
+</div>
+
+
+
 <script>
 
-/* FLOATING HEARTS */
 
-function createHeart() {
+/* 🔐 TASK DATA */
 
-    const heart = document.createElement("div");
+const tasks = [
 
-    heart.className = "heart";
+{
+    number:"TASK 01",
 
-    const emojis = [
-        "❤️",
-        "💕",
-        "💗",
-        "💖",
-        "✨",
-        "🌸"
-    ];
+    question:
+    "Hum dono mein photos ke liye best pose kaunsa hai? 👀📸",
 
-    heart.innerHTML =
-        emojis[Math.floor(Math.random() * emojis.length)];
+    options:[
+        "Pinky Pose 💕",
+        "Riyu Pose 😎",
+        "Bhumi Pose 😂"
+    ],
 
-    heart.style.left =
+    correct:1,
+
+    wrong:
+    "Nope 😏… ye wala nahi! Dobara socho 👀",
+
+    right:
+    "Yesss! 😎❤️ Tumhe toh bilkul yaad hai… chalo, ab next task ke liye ready ho? 👀"
+},
+
+
+{
+    number:"TASK 02",
+
+    question:
+    "Mujhe sabse zyada kya pasand hai? 😏❤️",
+
+    options:[
+
+        "Har waqt tumhare saath rehna & tumhare saath ghoomna 🫶",
+
+        "Tumhare baare mein sochna & tumhare liye kuch karte rehna, bas tumhare face par smile dekhne ke liye 😊❤️",
+
+        "All of these 😏❤️"
+
+    ],
+
+    correct:2,
+
+    wrong:
+    "Jiii… thoda aur socho 😏❤️ Itna bhi mushkil nahi tha 😂",
+
+    right:
+    "Hmmm… correct! 😌❤️ Mujhe pata tha tum ye wala choose karogi 😏"
+},
+
+
+{
+    number:"TASK 03",
+
+    question:
+    "Humne apni sabse pehli photo saath mein kahan click karwayi thi? 👀❤️",
+
+    options:[
+
+        "Khatu Shyam 🙏",
+
+        "Ghar 🏠",
+
+        "Amarpur Jorasi 📸"
+
+    ],
+
+    correct:2,
+
+    wrong:
+    "Areee 😭… hamari first photo bhi bhool gayi? Dobara try karo 😂❤️",
+
+    right:
+    "Yesss! 🥹❤️ Ye memory toh yaad honi hi chahiye… after all, ye hamari first photo thi 👀💕"
+}
+
+];
+
+
+let currentTask = 0;
+
+let answeredCorrectly = false;
+
+
+
+/* START MISSION */
+
+function startMission(){
+
+    document
+        .getElementById("startScreen")
+        .classList
+        .add("hidden");
+
+
+    document
+        .getElementById("taskScreen")
+        .classList
+        .remove("hidden");
+
+
+    loadTask();
+
+}
+
+
+
+/* LOAD TASK */
+
+function loadTask(){
+
+    answeredCorrectly = false;
+
+
+    const task = tasks[currentTask];
+
+
+    document
+        .getElementById("taskNumber")
+        .textContent = task.number;
+
+
+    document
+        .getElementById("question")
+        .textContent = task.question;
+
+
+    const options =
+        document.getElementById("options");
+
+
+    options.innerHTML = "";
+
+
+    const feedback =
+        document.getElementById("feedback");
+
+
+    feedback.className = "feedback";
+
+    feedback.textContent = "";
+
+
+    document
+        .getElementById("nextBtn")
+        .style.display = "none";
+
+
+    updateProgress();
+
+
+
+    task.options.forEach(
+        (option,index)=>{
+
+            const button =
+                document.createElement("button");
+
+
+            button.className = "option";
+
+
+            button.textContent = option;
+
+
+            button.onclick = function(){
+
+                checkAnswer(
+                    index,
+                    button
+                );
+
+            };
+
+
+            options.appendChild(button);
+
+        }
+    );
+
+}
+
+
+
+/* CHECK ANSWER */
+
+function checkAnswer(
+    index,
+    selectedButton
+){
+
+    if(answeredCorrectly)
+        return;
+
+
+    const task = tasks[currentTask];
+
+
+    const feedback =
+        document.getElementById("feedback");
+
+
+    const allOptions =
+        document.querySelectorAll(".option");
+
+
+
+    /* ✅ CORRECT */
+
+    if(index === task.correct){
+
+        answeredCorrectly = true;
+
+
+        selectedButton
+            .classList
+            .add("correct");
+
+
+        allOptions.forEach(
+            btn=>{
+
+                btn.style.pointerEvents =
+                    "none";
+
+            }
+        );
+
+
+        feedback.className =
+            "feedback success show";
+
+
+        feedback.textContent =
+            "✅ " + task.right;
+
+
+
+        if(currentTask < tasks.length - 1){
+
+            document
+                .getElementById("nextBtn")
+                .textContent =
+                "NEXT TASK 🌻";
+
+
+            document
+                .getElementById("nextBtn")
+                .style.display =
+                "inline-block";
+
+        }
+
+        else{
+
+            document
+                .getElementById("nextBtn")
+                .textContent =
+                "CLAIM YOUR REWARD 🎁";
+
+
+            document
+                .getElementById("nextBtn")
+                .style.display =
+                "inline-block";
+
+        }
+
+    }
+
+
+
+    /* ❌ WRONG */
+
+    else{
+
+        selectedButton
+            .classList
+            .add("wrong");
+
+
+        feedback.className =
+            "feedback error show";
+
+
+        feedback.textContent =
+            "❌ " + task.wrong;
+
+
+
+        const card =
+            document.getElementById("taskScreen");
+
+
+        card.classList.remove("shake");
+
+
+        void card.offsetWidth;
+
+
+        card.classList.add("shake");
+
+
+
+        setTimeout(()=>{
+
+            selectedButton
+                .classList
+                .remove("wrong");
+
+        },700);
+
+    }
+
+}
+
+
+
+/* NEXT TASK */
+
+function nextTask(){
+
+    if(!answeredCorrectly)
+        return;
+
+
+    if(currentTask < tasks.length - 1){
+
+        currentTask++;
+
+        loadTask();
+
+    }
+
+    else{
+
+        document
+            .getElementById("taskScreen")
+            .classList
+            .add("hidden");
+
+
+        document
+            .getElementById("rewardScreen")
+            .classList
+            .remove("hidden");
+
+    }
+
+}
+
+
+
+/* PROGRESS */
+
+function updateProgress(){
+
+    document
+        .getElementById("p1")
+        .classList
+        .remove("active");
+
+
+    document
+        .getElementById("p2")
+        .classList
+        .remove("active");
+
+
+    document
+        .getElementById("p3")
+        .classList
+        .remove("active");
+
+
+
+    for(
+        let i = 0;
+        i <= currentTask;
+        i++
+    ){
+
+        document
+            .getElementById("p"+(i+1))
+            .classList
+            .add("active");
+
+    }
+
+}
+
+
+
+/* SHOW FINAL CLUE */
+
+function showClue(){
+
+    document
+        .getElementById("clue")
+        .classList
+        .remove("hidden");
+
+}
+
+
+
+/* 🌻 FLOATING FLOWERS */
+
+const flowers = [
+
+    "🌻",
+    "🌼",
+    "✨",
+    "🌻"
+
+];
+
+
+for(
+    let i = 0;
+    i < 18;
+    i++
+){
+
+    const flower =
+        document.createElement("div");
+
+
+    flower.className = "flower";
+
+
+    flower.textContent =
+        flowers[
+            Math.floor(
+                Math.random() *
+                flowers.length
+            )
+        ];
+
+
+    flower.style.left =
         Math.random() * 100 + "%";
 
-    heart.style.animationDuration =
-        (4 + Math.random() * 3) + "s";
 
-    document.querySelector(".scene")
-        .appendChild(heart);
-
-    setTimeout(() => {
-        heart.remove();
-    }, 7000);
-}
-
-setInterval(createHeart, 550);
+    flower.style.animationDuration =
+        (8 + Math.random() * 8) + "s";
 
 
-/* OPEN SURPRISE */
-
-function openSurprise() {
-
-    document.getElementById("screen1")
-        .classList.add("hidden");
-
-    document.getElementById("screen2")
-        .classList.remove("hidden");
-
-    document.getElementById("night")
-        .style.opacity = "0";
-
-    document.getElementById("sunrise")
-        .style.opacity = "1";
-
-    document.getElementById("sun")
-        .style.bottom = "20%";
-
-    heartBurst();
-}
+    flower.style.animationDelay =
+        Math.random() * 8 + "s";
 
 
-/* SCREEN 3 */
-
-function nextScreen() {
-
-    document.getElementById("screen2")
-        .classList.add("hidden");
-
-    document.getElementById("screen3")
-        .classList.remove("hidden");
-
-    heartBurst();
-}
+    flower.style.fontSize =
+        (14 + Math.random() * 15) + "px";
 
 
-/* FINAL SCREEN */
+    document.body.appendChild(flower);
 
-function finalScreen() {
-
-    document.getElementById("screen3")
-        .classList.add("hidden");
-
-    document.getElementById("screen4")
-        .classList.remove("hidden");
-
-    heartBurst();
-}
-
-
-/* HEART BURST */
-
-function heartBurst() {
-
-    for (let i = 0; i < 20; i++) {
-
-        const heart =
-            document.createElement("div");
-
-        heart.className = "burst-heart";
-
-        heart.innerHTML =
-            Math.random() > 0.3 ? "❤️" : "✨";
-
-        heart.style.setProperty(
-            "--x",
-            (Math.random() * 500 - 250) + "px"
-        );
-
-        heart.style.setProperty(
-            "--y",
-            (Math.random() * 500 - 250) + "px"
-        );
-
-        document.querySelector(".scene")
-            .appendChild(heart);
-
-        setTimeout(() => {
-            heart.remove();
-        }, 2500);
-    }
 }
 
 </script>

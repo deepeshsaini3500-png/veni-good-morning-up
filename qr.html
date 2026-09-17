@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Veni's Little Surprise 🌻</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:20px;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 20% 10%,
+            #fff8c7 0%,
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 90% 80%,
+            #ffe9a8 0%,
+            transparent 30%
+        ),
+
+        linear-gradient(
+            135deg,
+            #fffdf1,
+            #fff3b8,
+            #fffaf0
+        );
+
+    color:#493816;
+
+    overflow:hidden;
+}
+
+
+/* 🌻 Floating flowers */
+
+.flower{
+
+    position:fixed;
+
+    bottom:-50px;
+
+    pointer-events:none;
+
+    opacity:.6;
+
+    animation:
+        floatFlower linear infinite;
+}
+
+@keyframes floatFlower{
+
+    0%{
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity:0;
+    }
+
+    15%{
+        opacity:.6;
+    }
+
+    100%{
+        transform:
+            translateY(-110vh)
+            rotate(180deg);
+
+        opacity:0;
+    }
+}
+
+
+/* MAIN CARD */
+
+.card{
+
+    width:100%;
+
+    max-width:500px;
+
+    padding:35px 25px;
+
+    text-align:center;
+
+    border-radius:30px;
+
+    background:
+        rgba(255,255,255,.76);
+
+    border:
+        2px solid
+        rgba(242,190,35,.35);
+
+    box-shadow:
+
+        0 15px 45px
+        rgba(139,101,15,.16),
+
+        inset 0 1px
+        rgba(255,255,255,.8);
+
+    backdrop-filter:blur(12px);
+
+    animation:
+        cardIn .7s ease;
+
+    position:relative;
+
+    z-index:2;
+}
+
+@keyframes cardIn{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(25px)
+            scale(.94);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* 🌻 Sunflower */
+
+.sunflower{
+
+    font-size:65px;
+
+    margin-bottom:10px;
+
+    animation:
+        sway 2.5s
+        ease-in-out infinite;
+}
+
+@keyframes sway{
+
+    0%,100%{
+        transform:rotate(-3deg);
+    }
+
+    50%{
+        transform:rotate(3deg);
+    }
+}
+
+
+/* TITLE */
+
+.title{
+
+    font-size:28px;
+
+    font-weight:900;
+
+    color:#765313;
+
+    margin-bottom:18px;
+}
+
+
+/* VENI */
+
+.veni{
+
+    font-size:40px;
+
+    font-weight:900;
+
+    color:#d59b00;
+
+    margin-bottom:20px;
+
+    text-shadow:
+
+        0 3px 8px
+        rgba(213,155,0,.2),
+
+        0 0 25px
+        rgba(255,210,50,.4);
+
+    animation:
+        glow 2.5s
+        ease-in-out infinite;
+}
+
+@keyframes glow{
+
+    0%,100%{
+
+        transform:scale(1);
+
+        text-shadow:
+
+            0 3px 8px
+            rgba(213,155,0,.2),
+
+            0 0 18px
+            rgba(255,210,50,.25);
+    }
+
+    50%{
+
+        transform:scale(1.04);
+
+        text-shadow:
+
+            0 4px 12px
+            rgba(213,155,0,.3),
+
+            0 0 30px
+            rgba(255,210,50,.55);
+    }
+}
+
+
+/* MESSAGE */
+
+.message{
+
+    font-size:17px;
+
+    line-height:1.7;
+
+    color:#654d24;
+
+    margin-bottom:25px;
+}
+
+
+/* VIDEO BUTTON */
+
+.video-btn{
+
+    display:inline-block;
+
+    text-decoration:none;
+
+    padding:16px 28px;
+
+    border-radius:50px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #f8c928,
+            #e6a900
+        );
+
+    color:#4b3505;
+
+    font-size:17px;
+
+    font-weight:900;
+
+    box-shadow:
+
+        0 8px 22px
+        rgba(205,157,16,.28);
+
+    transition:.25s;
+
+    animation:
+        buttonPulse 2s
+        ease-in-out infinite;
+}
+
+.video-btn:hover{
+
+    transform:
+        translateY(-3px)
+        scale(1.03);
+}
+
+@keyframes buttonPulse{
+
+    0%,100%{
+        box-shadow:
+            0 8px 22px
+            rgba(205,157,16,.25);
+    }
+
+    50%{
+        box-shadow:
+            0 10px 30px
+            rgba(205,157,16,.45);
+    }
+}
+
+
+/* FOOTER */
+
+.footer{
+
+    margin-top:25px;
+
+    font-size:14px;
+
+    color:#94752f;
+}
+
+
+/* MOBILE */
+
+@media(max-width:400px){
+
+    .card{
+
+        padding:
+            30px 19px;
+    }
+
+    .title{
+
+        font-size:25px;
+    }
+
+    .veni{
+
+        font-size:34px;
+    }
+
+    .message{
+
+        font-size:15px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="card">
+
+
+    <!-- 🌻 -->
+
+    <div class="sunflower">
+        🌻
+    </div>
+
+
+    <!-- TITLE -->
+
+    <div class="title">
+
+        🎉 YOU FOUND IT! 🍫
+
+    </div>
+
+
+    <!-- NAME -->
+
+    <div class="veni">
+
+        Veni Sharma ❤️
+
+    </div>
+
+
+    <!-- MESSAGE -->
+
+    <div class="message">
+
+        Areee Veni 😭❤️
+
+        <br>
+
+        Finallyyy tumhe chocolate mil hi gayi! 😂🍫
+
+        <br><br>
+
+        Itne saare tasks complete karke
+        yahan tak pahunchi ho…
+
+        <br>
+
+        <b>
+            I hope abhi tumhare face par
+            ek cute si smile hogi 😁💗
+        </b>
+
+        <br><br>
+
+        Waise chocolate toh bas ek bahana tha…
+
+        <br>
+
+        <b>
+            Tumhare liye kuch special karna tha,
+            isliye ye chhoti si treasure hunt banayi. 🫶🌻
+        </b>
+
+        <br><br>
+
+        Aur haan…
+
+        <br>
+
+        <b>
+            Reward mil gaya toh photo bhejna
+            bilkul compulsory hai jiii 😏📸❤️
+        </b>
+
+        <br><br>
+
+        Ab ye chhota sa surprise bhi dekh lo… 👀❤️
+
+    </div>
+
+
+    <!-- 🎬 VIDEO BUTTON -->
+
+    <a
+        class="video-btn"
+        href="https://drive.google.com/file/d/1kbNuhoU_LRNl4EYq5QvBURZVIHWjIL8m/view?usp=drivesdk"
+        target="_blank">
+
+        🎬 WATCH YOUR SURPRISE ❤️
+
+    </a>
+
+
+    <div class="footer">
+
+        Made just for you 🌻❤️
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+
+/* 🌻 FLOATING FLOWERS */
+
+const flowers = [
+
+    "🌻",
+    "🌼",
+    "✨",
+    "🌻",
+    "💛"
+
+];
+
+
+for(
+    let i = 0;
+    i < 18;
+    i++
+){
+
+    const flower =
+        document.createElement("div");
+
+
+    flower.className =
+        "flower";
+
+
+    flower.textContent =
+        flowers[
+            Math.floor(
+                Math.random()
+                * flowers.length
+            )
+        ];
+
+
+    flower.style.left =
+        Math.random() * 100 + "%";
+
+
+    flower.style.animationDuration =
+        (8 + Math.random() * 8)
+        + "s";
+
+
+    flower.style.animationDelay =
+        Math.random() * 8
+        + "s";
+
+
+    flower.style.fontSize =
+        (14 + Math.random() * 15)
+        + "px";
+
+
+    document.body.appendChild(
+        flower
+    );
+
+}
+
+</script>
+
+
+</body>
+</html>
